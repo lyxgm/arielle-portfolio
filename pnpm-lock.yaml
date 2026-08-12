@@ -194,6 +194,10 @@ importers:
       zod:
         specifier: ^3.23.8
         version: 3.25.76
+    devDependencies:
+      '@types/nodemailer':
+        specifier: ^8.0.1
+        version: 8.0.1
 
 packages:
 
@@ -1059,6 +1063,9 @@ packages:
 
   '@types/node@20.6.2':
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
+
+  '@types/nodemailer@8.0.1':
+    resolution: {integrity: sha512-PxpaInm8V1JQDd4j0ds5HfvWQk8JupS1C0Picb96QJsrrRDjBH+DlK7L4ZdNSqNULhiZRQHc40nLVShaGxXAMw==}
 
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
@@ -3724,6 +3731,10 @@ snapshots:
   '@types/json5@0.0.29': {}
 
   '@types/node@20.6.2': {}
+
+  '@types/nodemailer@8.0.1':
+    dependencies:
+      '@types/node': 20.6.2
 
   '@types/prop-types@15.7.15': {}
 

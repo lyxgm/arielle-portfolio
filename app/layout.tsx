@@ -2,7 +2,7 @@
 // The layout is designed to provide a seamless user experience across different devices and screen sizes, with responsive design and accessibility features. The ThemeProvider component manages the theme state and provides context for the application, allowing users to switch between light and dark themes. The metadata object defines the title and description of the website, which can be used for SEO and social media sharing. Overall, this root layout serves as the foundation for the Next.js application, ensuring a consistent look and feel across all pages and components.
 
 import './globals.css';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import ThemeProvider from '@/components/ThemeProvider';
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
+export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
