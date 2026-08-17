@@ -141,7 +141,7 @@ export const projects: Project[] = [
     title: 'Homeo Wellness System',
     shortDescription: 'Online Booking for Wellness & Healthcare Website',
     category: 'Web Design',
-    thumbnail: '/images/projects/homeo-wellness/00.png',
+    thumbnail: '/images/projects/homeo-wellness/00.mp4',
     featured: true,
 
     caseStudy: {
@@ -176,6 +176,9 @@ export const projects: Project[] = [
         '/images/projects/homeo-wellness/04.png',
         '/images/projects/homeo-wellness/05.png',
         '/images/projects/homeo-wellness/06.png',
+        '/images/projects/homeo-wellness/07.png',
+        '/images/projects/homeo-wellness/08.png',
+        '/images/projects/homeo-wellness/09.png'
       ],
 
       liveUrl: 'https://homeo-wellness.vercel.app',
