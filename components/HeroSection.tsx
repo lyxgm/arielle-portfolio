@@ -29,7 +29,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative bg-background overflow-hidden pt-[52px]"
+      className="relative overflow-hidden border-b border-border/40 bg-background pt-[52px]"
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20 dark:opacity-10">
@@ -39,17 +39,15 @@ export default function HeroSection() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* MOBILE layout */}
-        <div className="lg:hidden flex flex-col">
-          <div className="relative flex justify-center items-end pt-4 pb-2 min-h-[300px] sm:min-h-[380px]">
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ top: '8px' }}>
-              <div className="w-[270px] h-[270px] sm:w-[340px] sm:h-[340px] rounded-full bg-secondary/20" />
-            </div>
+        <div className="lg:hidden flex flex-col justify-start gap-1 pt-3 pb-5">
+          <div className="relative flex flex-col items-center px-1 pt-1 pb-0 sm:pt-3 sm:pb-2">
+            <div className="pointer-events-none absolute left-1/2 top-8 h-[270px] w-[270px] -translate-x-1/2 rounded-full bg-secondary/20 sm:h-[340px] sm:w-[340px]" />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55 }}
-              className="relative z-10 w-[210px] sm:w-[270px] h-[280px] sm:h-[360px]"
+              className="relative z-10 h-[clamp(240px,66vw,295px)] w-[clamp(205px,72vw,245px)] sm:h-[400px] sm:w-[310px]"
             >
               <Image
                 src="/images/arielle-new.png"
@@ -57,35 +55,38 @@ export default function HeroSection() {
                 fill
                 className="object-contain object-bottom"
                 priority
+                sizes="(max-width: 640px) 250px, 310px"
               />
             </motion.div>
 
-            {/* Mobile floating cards */}
-            {floatCards.map((card, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + idx * 0.1 }}
-                className={`absolute ${idx === 0 ? 'top-10 left-2' : idx === 1 ? 'top-[110px] right-2' : 'bottom-[40px] left-2'} glass rounded-2xl shadow-xl p-3 w-[110px] sm:w-[140px] z-20 flex items-start gap-2.5`}
-              >
-                <div className={`w-8 h-8 rounded-xl ${card.bg} flex items-center justify-center flex-shrink-0`}>
-                  {card.icon}
-                </div>
-                <div>
-                  <p className="text-[10.5px] font-bold leading-tight">{card.title}</p>
-                  <p className="text-[9.5px] text-muted-foreground mt-0.5 leading-snug">{card.sub}</p>
-                </div>
-              </motion.div>
-            ))}
+            {/* Mobile floating cards: kept below the portrait for a cleaner narrow layout. */}
+            <div className="relative z-20 mt-0 grid w-full grid-cols-3 gap-1.5 sm:mt-2 sm:gap-2">
+              {floatCards.map((card, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 + idx * 0.1 }}
+                  className="glass flex min-w-0 items-start gap-1.5 rounded-xl p-2.5 shadow-lg sm:gap-2 sm:rounded-2xl sm:p-3"
+                >
+                  <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg sm:h-8 sm:w-8 sm:rounded-xl ${card.bg}`}>
+                    {card.icon}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-[8.5px] font-bold leading-tight sm:text-[10.5px]">{card.title}</p>
+                    <p className="mt-0.5 line-clamp-2 text-[7.5px] leading-snug text-muted-foreground sm:text-[9.5px]">{card.sub}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="px-0 pb-8 pt-4">
+          <div className="px-0 pb-2 pt-1 text-center sm:pb-8 sm:pt-4">
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.12 }}
-              className="flex items-center gap-2 mb-3"
+              className="mb-2 flex items-center justify-center gap-2 sm:mb-3"
             >
               <motion.span
                 animate={{ scale: [1, 1.3, 1] }}
@@ -101,12 +102,12 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-3"
+              className="mb-2 sm:mb-3"
             >
-              <h1 className="text-[clamp(2rem,5vw,3rem)] font-black leading-[1.08] tracking-tight">
+              <h1 className="text-[clamp(1.9rem,7.5vw,2.8rem)] font-black leading-[1.02] tracking-[-0.03em]">
                 Streamlining your
               </h1>
-              <h1 className="text-[clamp(2rem,5vw,3rem)] font-black leading-[1.12] tracking-tight text-gradient italic font-serif">
+              <h1 className="text-[clamp(1.9rem,7.5vw,2.8rem)] font-black leading-[1.04] tracking-[-0.03em] text-gradient italic font-serif">
                 workflow & growth.
               </h1>
             </motion.div>
@@ -115,23 +116,23 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.27 }}
-              className="text-muted-foreground text-[clamp(0.95rem,2.2vw,1rem)] leading-[1.65] mb-5"
+              className="mx-auto mb-3 max-w-[34rem] text-[clamp(0.9rem,2.2vw,0.98rem)] leading-[1.5] text-muted-foreground sm:mb-5 sm:leading-[1.65]"
             >
               Expert virtual assistance, organized administration, and modern web design tailored for entrepreneurs.
             </motion.p>
 
-            <div className="flex flex-col gap-2.5 mb-5">
+            <div className="mb-3 grid grid-cols-2 gap-2.5 sm:mb-5">
               <motion.a
                 href="#contact"
                 whileTap={{ scale: 0.97 }}
-                className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground text-[14px] font-bold px-5 py-3 rounded-full shadow-lg shadow-primary/20 hover:opacity-90 transition-all"
+                className="min-h-11 w-full flex items-center justify-center gap-1.5 bg-primary text-primary-foreground text-[12px] font-bold px-4 py-3 rounded-full shadow-lg shadow-primary/20 hover:opacity-90 transition-all sm:text-[14px] sm:px-5"
               >
                 Hire Me <ArrowRight size={15} />
               </motion.a>
               <motion.a
                 href="#portfolio"
                 whileTap={{ scale: 0.97 }}
-                className="w-full flex items-center justify-center gap-2 border-2 border-border text-foreground text-[14px] font-bold px-5 py-2.5 rounded-full hover:border-primary/50 transition-all"
+                className="min-h-11 w-full flex items-center justify-center gap-1.5 border-2 border-border text-foreground text-[12px] font-bold px-4 py-2.5 rounded-full hover:border-primary/50 transition-all sm:text-[14px] sm:px-5"
               >
                 View My Work <Grid3x3 size={14} />
               </motion.a>
@@ -164,10 +165,10 @@ export default function HeroSection() {
               transition={{ delay: 0.14 }}
               className="mb-6"
             >
-              <h1 className="text-[clamp(2.75rem,4.5vw,4rem)] font-black leading-[1.06] tracking-tight">
+              <h1 className="text-[clamp(2.5rem,4.2vw,3.6rem)] font-black leading-[1.04] tracking-tight">
                 Streamlining your
               </h1>
-              <h1 className="text-[clamp(2.75rem,4.5vw,4rem)] font-black leading-[1.1] tracking-tight text-gradient italic font-serif">
+              <h1 className="text-[clamp(2.5rem,4.2vw,3.6rem)] font-black leading-[1.08] tracking-tight text-gradient italic font-serif">
                 workflow & growth.
               </h1>
             </motion.div>
@@ -212,9 +213,9 @@ export default function HeroSection() {
               className="flex items-center gap-4"
             >
               <span className="text-[13px] text-muted-foreground font-medium">Find me on:</span>
-              <a href="https://www.fiverr.com/arielle_assistant" target="_blank" rel="noreferrer" className="text-foreground font-bold hover:text-primary transition-colors">Fiverr</a>
-              <a href="https://www.upwork.com/freelancers/~arielle_assistant" target="_blank" rel="noreferrer" className="text-foreground font-bold hover:text-primary transition-colors">Upwork</a>
-              <a href="mailto:ariellecess0816@gmail.com" className="flex items-center gap-1 text-[13px] text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.fiverr.com/s/3AG8yLA" target="_blank" rel="noreferrer" className="text-foreground font-bold hover:text-primary transition-colors">Fiverr</a>
+              <a href="https://www.upwork.com/freelancers/~01a76a99ea694547f5?mp_source=share" target="_blank" rel="noreferrer" className="text-foreground font-bold hover:text-primary transition-colors">Upwork</a>
+              <a href="mailto:princessatungpalan@gmail.com" className="flex items-center gap-1 text-[13px] text-muted-foreground hover:text-primary transition-colors">
                 <Mail size={14} /> Email
               </a>
             </motion.div>
@@ -235,7 +236,6 @@ export default function HeroSection() {
                 alt="Arielle"
                 fill
                 className="object-contain"
-                priority
               />
             </motion.div>
 

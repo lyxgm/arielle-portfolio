@@ -124,3 +124,40 @@
 .animate-tools-right {
   animation: tools-right 28s linear infinite;
 }
+
+/* Site-wide accessibility and performance safeguards */
+html {
+  scroll-padding-top: 5rem;
+}
+
+:focus-visible {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Defer rendering for below-the-fold sections without changing their layout footprint. */
+section:not(#home) {
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
+}

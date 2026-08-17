@@ -21,9 +21,9 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-12 sm:py-14 bg-white dark:bg-zinc-900">
+    <section id="faq" className="py-10 sm:py-14 bg-white dark:bg-zinc-900">
       <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8 sm:mb-10">
           <p className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-violet-500 dark:text-violet-400 mb-2">Frequently Asked Questions</p>
           <h2 className="text-[1.9rem] sm:text-4xl font-black text-gray-900 dark:text-white">
             Got <span className="text-violet-600 dark:text-violet-400 italic" style={{ fontFamily: 'var(--font-playfair)' }}>Questions?</span>
@@ -42,8 +42,8 @@ export default function FAQSection() {
                 open === i ? 'border-violet-200 bg-violet-50/50 dark:bg-violet-900/20 dark:border-violet-800' : 'border-gray-100 dark:border-zinc-700 bg-white dark:bg-zinc-800'
               }`}
             >
-              <button onClick={() => setOpen(open === i ? null : i)} className="w-full flex items-center justify-between p-4 text-left">
-                <span className="text-[12.5px] font-semibold text-gray-900 dark:text-white pr-3">{faq.q}</span>
+              <button onClick={() => setOpen(open === i ? null : i)} className="w-full flex items-center justify-between p-3.5 text-left sm:p-4">
+                <span className="pr-3 text-[12px] font-semibold text-gray-900 dark:text-white sm:text-[12.5px]">{faq.q}</span>
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${open === i ? 'bg-violet-600 text-white' : 'bg-gray-100 dark:bg-zinc-600 text-gray-500 dark:text-gray-300'}`}>
                   {open === i ? <Minus size={11} /> : <Plus size={11} />}
                 </div>

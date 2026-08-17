@@ -57,15 +57,15 @@ const steps = [
 
 export default function TransformSection() {
   return (
-    <section className="py-20 bg-muted/20 relative overflow-hidden">
+    <section className="py-8 sm:py-20 bg-muted/20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-7 sm:mb-16"
         >
-          <p className="text-lg font-bold text-muted-foreground">
+          <p className="text-base font-bold text-muted-foreground sm:text-lg">
             I help you go from <span className="text-foreground font-black">overwhelmed</span> to{' '}
             <span className="text-primary font-black underline decoration-wavy decoration-secondary/50 underline-offset-8">
               organized.
@@ -73,7 +73,7 @@ export default function TransformSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -83,7 +83,7 @@ export default function TransformSection() {
               transition={{ delay: i * 0.1 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="mb-6 h-20 w-20 rounded-3xl bg-background shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+              <div className="mb-3 h-14 w-14 rounded-2xl bg-background shadow-lg flex items-center justify-center transition-transform duration-500 group-hover:scale-110 sm:mb-6 sm:h-20 sm:w-20 sm:rounded-3xl">
                 {step.visual}
               </div>
               <p className="text-sm font-bold text-muted-foreground leading-relaxed whitespace-pre-line group-hover:text-foreground transition-colors">

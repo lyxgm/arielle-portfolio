@@ -32,15 +32,15 @@ export default function ServicesSection() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-20 bg-background relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-20 bg-background relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-black mb-4">
+          <h2 className="text-[1.75rem] sm:text-4xl font-black mb-4">
             Services <span className="text-gradient font-serif italic">I Offer</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* MOBILE: collapsible accordion */}
-        <div className="lg:hidden space-y-4">
+        <div className="lg:hidden space-y-3 sm:space-y-4">
           {services.map((svc, i) => (
             <div
               key={i}
@@ -59,9 +59,9 @@ export default function ServicesSection() {
             >
               <button
                 onClick={() => setExpanded(expanded === i ? null : i)}
-                className="w-full flex items-center gap-4 p-5 text-left"
+                className="w-full flex items-center gap-3 p-4 text-left sm:gap-4 sm:p-5"
               >
-                <div className={`w-12 h-12 rounded-2xl ${svc.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'} flex items-center justify-center flex-shrink-0`}>
+                <div className={`h-10 w-10 shrink-0 rounded-xl ${svc.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-secondary/10 text-secondary'} flex items-center justify-center sm:h-12 sm:w-12 sm:rounded-2xl`}>
                   {svc.icon}
                 </div>
                 <span className="flex-1 font-bold">{svc.title}</span>
@@ -77,7 +77,7 @@ export default function ServicesSection() {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-6 pt-0">
+                    <div className="px-4 pb-5 pt-0 sm:px-5 sm:pb-6">
                       <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{svc.description}</p>
                       <ul className="space-y-3 mb-6">
                         {svc.items.map((item, j) => (

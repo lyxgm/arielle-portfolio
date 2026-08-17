@@ -26,11 +26,11 @@ const icons = [
 
 export default function WorkProcessSection() {
   return (
-    <section id="process" className="relative py-12 sm:py-14 overflow-hidden bg-white dark:bg-zinc-900"
+    <section id="process" className="relative py-10 sm:py-14 overflow-hidden bg-white dark:bg-zinc-900"
       style={{ backgroundImage: 'radial-gradient(circle, #d1d5db 1px, transparent 1px)', backgroundSize: '22px 22px' }}>
       <div className="absolute inset-0 bg-white/60 dark:bg-zinc-900/60 pointer-events-none" />
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 sm:mb-12">
+        <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8 sm:mb-12">
           <p className="text-[10.5px] font-bold uppercase tracking-[0.22em] text-violet-500 dark:text-violet-400 mb-1.5">My Work Process</p>
           <h2 className="text-[1.7rem] sm:text-[2rem] font-black text-gray-900 dark:text-white">
             How We{' '}
@@ -42,7 +42,7 @@ export default function WorkProcessSection() {
         <div className="sm:hidden relative pl-10">
           {/* Vertical line */}
           <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-violet-100 dark:bg-zinc-700" />
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             {steps.map((step, i) => (
               <motion.div
                 key={i}

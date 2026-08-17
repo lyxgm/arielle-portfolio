@@ -28,6 +28,13 @@ export default function PortfolioSection() {
     }
   };
 
+  const handleCardKeyDown = (event: React.KeyboardEvent, project: Project) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setSelected(project);
+    }
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-background relative overflow-hidden">
       {/* Decorative background */}
@@ -56,9 +63,12 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="glass rounded-[2rem] overflow-hidden border-primary/5 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
+              className="group cursor-pointer overflow-hidden rounded-[2rem] border-primary/5 shadow-lg transition-shadow duration-300 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hover:-translate-y-2"
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${p.title} project details`}
               onClick={() => setSelected(p)}
+              onKeyDown={(event) => handleCardKeyDown(event, p)}
               onMouseEnter={() => handleEnter(p.id)}
               onMouseLeave={() => handleLeave(p.id)}
             >
@@ -67,7 +77,7 @@ export default function PortfolioSection() {
                   src={p.thumbnail}
                   alt={p.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
                 
@@ -79,7 +89,8 @@ export default function PortfolioSection() {
                     loop
                     playsInline
                     preload="none"
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   />
                 )}
 

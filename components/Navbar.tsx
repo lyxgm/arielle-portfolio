@@ -23,11 +23,31 @@ export default function Navbar() {
   useEffect(() => {
     setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMobileOpen(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const closeMobileMenu = () => setMobileOpen(false);
 
   return (
     <motion.header
@@ -121,7 +141,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               aria-label="Toggle dark mode"
               whileTap={{ scale: 0.95 }}
-              className="relative w-9 h-9 rounded-full flex items-center justify-center bg-muted hover:bg-muted/80 transition-colors overflow-hidden"
+              className="relative h-10 w-10 rounded-full flex items-center justify-center bg-muted hover:bg-muted/80 transition-colors overflow-hidden"
             >
               <span className="absolute inset-0 rounded-full bg-primary/10 dark:bg-primary/20 transition-colors" />
               <AnimatePresence mode="wait">
@@ -155,64 +175,59 @@ export default function Navbar() {
               </AnimatePresence>
             </motion.button>
             <button
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/80 text-foreground shadow-sm transition-all duration-200 hover:scale-105 hover:bg-muted/80"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              type="button"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/80 text-foreground shadow-sm transition-colors duration-200 hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
             >
-              <span className="sr-only">Toggle menu</span>
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -3 }}
-                transition={{ duration: 0.2 }}
-                className="absolute block h-0.5 w-5 rounded-full bg-current"
-              />
-              {/* <motion.span
-                animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="absolute block h-0.5 w-5 rounded-full bg-current"
-              /> */}
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 3 }}
-                transition={{ duration: 0.2 }}
-                className="absolute block h-0.5 w-5 rounded-full bg-current"
-              />
+              <span className="sr-only">{mobileOpen ? 'Close menu' : 'Open menu'}</span>
+              <AnimatePresence initial={false} mode="wait">
+                {mobileOpen ? (
+                  <motion.span key="close" initial={{ opacity: 0, rotate: -45 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 45 }}>
+                    <X size={19} aria-hidden="true" />
+                  </motion.span>
+                ) : (
+                  <motion.span key="menu" initial={{ opacity: 0, rotate: 45 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -45 }}>
+                    <Menu size={19} aria-hidden="true" />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile dropdown */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -10, height: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="lg:hidden overflow-hidden border-b border-border bg-background/95 backdrop-blur-md"
-          >
-            <nav className="flex flex-col gap-2 p-4 sm:p-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-base font-semibold text-foreground transition-colors hover:bg-muted/70 hover:text-primary"
-                >
-                  {link.label}
-                </a>
-              ))}
+      {mobileOpen && (
+        <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-label="Mobile navigation"
+          className="lg:hidden max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-b border-border bg-background/95 backdrop-blur-md"
+        >
+          <nav className="flex flex-col gap-1.5 px-4 py-3 sm:px-6 sm:py-4">
+            {navLinks.map((link) => (
               <a
-                href="/#contact"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-center font-black text-primary-foreground shadow-lg shadow-primary/20"
+                key={link.href}
+                href={link.href}
+                onClick={closeMobileMenu}
+                className="rounded-xl px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted/70 hover:text-primary"
               >
-                Get in Touch <ArrowUpRight size={18} />
+                {link.label}
               </a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <a
+              href="/#contact"
+              onClick={closeMobileMenu}
+              className="mt-1 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-black text-primary-foreground shadow-lg shadow-primary/20"
+            >
+              Get in Touch <ArrowUpRight size={18} />
+            </a>
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 }

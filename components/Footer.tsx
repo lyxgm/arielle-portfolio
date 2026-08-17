@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap gap-3">
               <motion.a
-                href="https://www.fiverr.com/arielle_assistant"
+                href="https://www.fiverr.com/s/3AG8yLA"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -37,7 +37,7 @@ export default function Footer() {
                 Fiverr <ArrowUpRight size={14} />
               </motion.a>
               <motion.a
-                href="https://www.upwork.com/freelancers/~arielle_assistant"
+                href="https://www.upwork.com/freelancers/~01a76a99ea694547f5?mp_source=share"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -46,7 +46,7 @@ export default function Footer() {
                 Upwork <ArrowUpRight size={14} />
               </motion.a>
               <motion.a
-                href="https://www.linkedin.com/in/arielle-assistant"
+                href="https://www.linkedin.com/in/princess-arielle-t-0127a942a/"
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -88,8 +88,8 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-black uppercase tracking-widest mb-6">Let&apos;s Connect</h4>
-            <a href="mailto:ariellecess0816@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-4">
-              <Mail size={14} /> ariellecess0816@gmail.com
+            <a href="mailto:princessatungpalan@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-4">
+              <Mail size={14} /> princessatungpalan@gmail.com
             </a>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Based in the Philippines. Available for global collaboration.

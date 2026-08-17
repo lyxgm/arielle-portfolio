@@ -6,12 +6,14 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import ThemeProvider from '@/components/ThemeProvider';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const playfair = Playfair_Display({
   subsets: ['latin'],
   style: ['normal', 'italic'],
   weight: ['400', '700', '900'],
   variable: '--font-playfair',
+  display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -33,7 +35,6 @@ export const metadata: Metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: 'cover',
 };
 
