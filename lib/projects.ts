@@ -98,7 +98,7 @@ export const projects: Project[] = [
     category: 'Web Design',
     thumbnail: '/images/projects/creative-video-editor-portfolio/01.png',
     hoverVideo: '/images/projects/creative-video-editor-portfolio/00.mp4',
-    featured: true,
+    featured: false,
 
     caseStudy: {
       overview:
@@ -141,7 +141,8 @@ export const projects: Project[] = [
     title: 'Homeo Wellness System',
     shortDescription: 'Online Booking for Wellness & Healthcare Website',
     category: 'Web Design',
-    thumbnail: '/images/projects/homeo-wellness/00.mp4',
+    thumbnail: '/images/projects/homeo-wellness/01.png',
+    hoverVideo: '/images/projects/homeo-wellness/00.mp4',
     featured: true,
 
     caseStudy: {
@@ -182,6 +183,65 @@ export const projects: Project[] = [
       ],
 
       liveUrl: 'https://homeo-wellness.vercel.app',
+    },
+  },
+
+  {
+    id: 4,
+    title: 'Store Inventory & Sales System',
+    shortDescription: 'Web-Based Inventory and Sales Management System',
+    category: 'Business Support',
+    thumbnail: '/images/projects/sims/01.png',
+    hoverVideo: '/images/projects/sims/00.mp4',
+    featured: true,
+
+    caseStudy: {
+      overview:
+        'A retail management system designed to help small stores manage inventory, sales, unpaid balances, restocking, and reports in one centralized interface.',
+
+      problem:
+        'Small stores may rely on manual records or spreadsheets, making it difficult to accurately track stock, sales, customer balances, and products that need restocking.',
+
+      solution:
+        'A streamlined store-management solution that makes everyday inventory and sales operations faster, clearer, and more organized.',
+
+      features: [
+        'Dashboard with sales, inventory value, and low-stock monitoring',
+        'Inventory management with product search, categories, and stock tracking',
+        'Paid and Utang sales recording with automatic stock updates',
+        'Restocking workflow with low-stock and out-of-stock monitoring',
+        'Transaction history with sales, Utang, and restock records',
+        'Reports and exports in CSV, Excel, and PDF formats',
+      ],
+
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'Tailwind CSS',
+        'Recharts',
+        'Lucide React',
+        'SheetJS',
+        'jsPDF',
+        'localStorage',
+      ],
+
+      screenshots: [
+        '/images/projects/sims/01.png',
+        '/images/projects/sims/02.png',
+        '/images/projects/sims/03.png',
+        '/images/projects/sims/04.png',
+        '/images/projects/sims/05.png',
+        '/images/projects/sims/06.png',
+        '/images/projects/sims/07.png',
+        '/images/projects/sims/08.png',
+        '/images/projects/sims/09.png',
+        '/images/projects/sims/10.png',
+        '/images/projects/sims/11.png',
+        '/images/projects/sims/12.png'
+      ],
+
+      liveUrl: 'https://sims-rust-sigma.vercel.app',
     },
   },
 ];
