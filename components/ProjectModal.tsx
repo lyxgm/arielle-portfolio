@@ -19,6 +19,8 @@ const sections = [
 ];
 
 export default function ProjectModal({ project, onClose }: Props) {
+  console.log('Project:', project?.title);
+  console.log('Live URL:', project?.caseStudy.liveUrl);
   return (
     <AnimatePresence>
       {project && (
@@ -121,15 +123,17 @@ export default function ProjectModal({ project, onClose }: Props) {
 
               {/* Action buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-border">
-                <a
-                  href={project.caseStudy.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black py-4 rounded-2xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all"
-                >
-                  <ExternalLink size={18} />
-                  Live Demo
-                </a>
+                {project.caseStudy.liveUrl && (
+                  <a
+                    href={project.caseStudy.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black py-4 rounded-2xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all"
+                  >
+                    <ExternalLink size={18} />
+                    Live Demo
+                  </a>
+                )}
                 {project.caseStudy.githubUrl && (
                   <a
                     href={project.caseStudy.githubUrl}

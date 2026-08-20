@@ -244,6 +244,154 @@ export const projects: Project[] = [
       liveUrl: 'https://sims-rust-sigma.vercel.app',
     },
   },
+
+  {
+    id: 5,
+    title: 'Data Encoding & Management System',
+    shortDescription: 'Automated Excel-based system for organizing client records, validating data, detecting duplicates, and monitoring data quality.',
+    category: 'Business Support',
+    thumbnail: '/images/projects/01.png',
+    hoverVideo: '/images/projects/001.mp4',
+    featured: false,
+
+    caseStudy: {
+      overview:
+        'A professional Excel-based data management system designed to efficiently encode, organize, and maintain client records. The system automates record identification, data validation, duplicate detection, and reporting.',
+
+      problem:
+        'Manual data entry can result in duplicate records, incomplete information, invalid data, and time-consuming verification.',
+
+      solution:
+        'Automated record entry, validation, duplicate detection, and data-quality tracking in one organized system, reducing manual checking and improving data accuracy.',
+
+      features: [
+        'Automatic record ID generation',
+        'Permanent date tracking',
+        'Email validation',
+        'New-record-only duplicate detection',
+        'Missing-field detection',
+        'Automatic data-quality classification',
+        'Needs Attention indicators',
+        'Search with multiple matching results',
+        'Dynamic dropdowns and validation',
+        'Automated dashboard and reporting',
+      ],
+
+      technologies: [
+        'Microsoft Excel',
+        'Excel Tables',
+        'Dynamic Formulas',
+        'Data Validation',
+        'Conditional Formatting',
+        'Dashboard & Charts',
+      ],
+
+      screenshots: [
+        '/images/projects/01.png',
+      ],
+
+    },
+  },
+
+  {
+    id: 6,
+    title: 'File & Document Management System',
+    shortDescription: 'Automated document tracker for organizing business files, monitoring expiration dates, and identifying documents requiring attention.',
+    category: 'Business Support',
+    thumbnail: '/images/projects/02.png',
+    hoverVideo: '/images/projects/002.mp4',
+    featured: false,
+
+    caseStudy: {
+      overview:
+        'A document-management system designed for organizing business files, monitor document status, and proactively track expiration dates and deadlines.',
+
+      problem:
+        'Managing business documents manually makes it easy to lose track of file locations, duplicate documents, and important expiration dates.',
+
+      solution:
+        'Automated document organization, expiration tracking, and alerts, making it easier to monitor files and prevent missed deadlines.',
+
+      features: [
+        'Automatic document ID generation',
+        'Permanent date tracking',
+        'Document categorization',
+        'Expiration date monitoring',
+        'Automatic days-remaining calculation',
+        'Valid, expiring soon, and expired detection',
+        'Duplicate document detection',
+        'Missing-information detection',
+        'Action-required alerts',
+        'Search with multiple matching results',
+        'Automated dashboard and reporting',
+      ],
+
+      technologies: [
+        'Microsoft Excel',
+        'Excel Tables',
+        'Dynamic Formulas',
+        'Data Validation',
+        'Conditional Formatting',
+        'Dashboard & Charts',
+      ],
+
+      screenshots: [
+        '/images/projects/02.png',
+        '/images/projects/03.png',
+      ],
+
+    },
+  },
+
+  {
+    id: 7,
+    title: 'Task & Follow-Up Management System',
+    shortDescription: 'Automated Excel productivity system for managing tasks, priorities, deadlines, and client follow-ups.',
+    category: 'Business Support',
+    thumbnail: '/images/projects/04.png',
+    hoverVideo: '/images/projects/003.mp4',
+    featured: false,
+
+    caseStudy: {
+      overview:
+        'An automated Excel task and follow-up management system designed to help organize workloads, prioritize tasks, monitor deadlines, and stay on top of client follow-ups.',
+
+      problem:
+        'Managing multiple client tasks manually can make it difficult to prioritize work, track deadlines, and remember follow-ups, increasing the risk of overdue tasks.',
+
+      solution:
+        'Automated task tracking, deadline monitoring, and follow-up alerts, helping VAs prioritize work and stay on schedule.',
+
+      features: [
+        'Automatic task ID generation',
+        'Permanent date tracking',
+        'Automatic days-remaining calculation',
+        'Deadline status detection',
+        'Priority management',
+        'Follow-up tracking',
+        'Overdue task alerts',
+        'Follow-up overdue alerts',
+        'Automatic completion tracking',
+        'Search with multiple matching results',
+        'Completion-rate dashboard',
+        'Automated workload reporting',
+      ],
+
+      technologies: [
+        'Microsoft Excel',
+        'Excel Tables',
+        'Dynamic Formulas',
+        'Data Validation',
+        'Conditional Formatting',
+        'Dashboard & Charts',
+      ],
+
+      screenshots: [
+        '/images/projects/04.png',
+      ],
+
+    },
+  },
 ];
 
 export const featuredProjects = projects.filter(
